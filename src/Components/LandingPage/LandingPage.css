@@ -1,0 +1,7 @@
+.landing-page{
+    background: linear-gradient(180deg, #743ef0, whitesmoke 50%);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
