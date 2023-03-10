@@ -4,7 +4,7 @@ import './LandingPgCard.css'
 import {userContext} from '../Context/Context'
 import {useNavigate } from 'react-router-dom'
 function LandingPgCard() {
-    const { user, setuser } = useContext(userContext)
+    const { user, setuser,setLoadedusers } = useContext(userContext)
     const Navigate=useNavigate()
     const [users, setusers] = useState([])
     const handleClick=(x)=>{
@@ -15,6 +15,7 @@ function LandingPgCard() {
         axios.get('https://panorbit.in/api/users.json')
             .then(response =>{
                 setusers(response.data.users)
+                setLoadedusers(response.data.users)
             })
             .catch(err =>{
                 throw err

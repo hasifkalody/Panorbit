@@ -1,37 +1,37 @@
-.profile-contaier{
+.profile-contaier {
     display: flex;
-}
-.profile-contaier{
     padding: 30px;
-    height: 100vh;
+    position: relative;
 }
-.profile-left{
+
+.profile-left {
     width: 20%;
-    height: 100%;
     border-radius: 25px;
-    background: linear-gradient( #3f44e0, #6f42f5 90%);
+    background: linear-gradient(#3f44e0, #6f42f5 90%);
     padding: 30px 0 30px 30px;
-}
-.profile-left{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.profile-inner-el span{
-    color: rgb(211,211,211,.5);
+
+.profile-inner-el span {
+    color: rgb(211, 211, 211, .5);
     font-weight: 600;
 }
-.profile-inner-el{
+
+.profile-inner-el {
     width: 100%;
     height: 60px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid rgb(211,211,211,.5);
+    border-bottom: 1px solid rgb(211, 211, 211, .5);
 }
-.active span{
-    color:white;
+
+.active span {
+    color: white;
 }
+
 /* indicator design start */
 
 /* .active-indicator{
@@ -43,54 +43,151 @@
     align-items: flex-end;
     gap: 0;
 } */
-.indicator-1el,.indicator-3el{
+.indicator-1el,
+.indicator-3el {
     height: 20px;
     width: 20px;
-    background-color: green;
     border-radius: 50%;
     position: absolute;
     top: -20px;
     right: 0;
 }
-.indicator-3el{
+
+.indicator-3el {
     top: 40px;
 }
-.indicator-2el{
+
+.indicator-2el {
     width: 100px;
     height: 50px;
     background-color: #ccc;
     border-radius: 0 0 50% 50%;
     transform: rotate(45deg);
 }
+
 /* indicator design end */
 
 /* right section start */
-.profile-right{
+.profile-right {
     width: 80%;
-    background-color: red;
+    padding-left: 40px;
 }
-.right-first-el{
+
+.right-first-el {
     display: flex;
     justify-content: space-between;
+    padding: 20px 0;
     position: relative;
-    border-bottom: 1px solid rgb(224,224,224);
+    border-bottom: 2px solid rgb(232, 232, 232);
 }
-.first-el-rght{
-    width: 200px;
+
+.right-first-el span {
+    color: var(--color);
+    font-weight: 600;
+    font-size: 18px;
+}
+
+.first-el-rght {
     display: flex;
-    gap: .8em;
+    gap: 0.8em;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     cursor: pointer;
 }
-.first-el-rght img{
+
+.first-el-rght img {
     width: 40px;
     border-radius: 50%;
     display: block;
 }
-.first-el-rght span{
+
+.first-el-rght span {
     display: block;
-    color: rgb(105,105,105);
+    color: rgb(105, 105, 105);
+}
+
+.rgt-scnd-el-left {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 40px 40px 0 0;
+    color:var(--color) ;
+}
+
+.left-key {
+    display: block;
+}
+
+.rgt-scnd-el-left img {
+    width: 200px;
+    border-radius: 50%;
+    padding-bottom: 20px;
+}
+
+.keys-container {
+    width: 120px;
+    display: flex;
+    justify-content: flex-end;
+    flex-shrink: 0;
+    gap: .5em;
+}
+
+.rgt-scnd-el-lft-keys {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    gap: 1em;
+    color: rgb(190, 190, 190);
+    padding-top:0.8em;
+}
+
+.rgt-scnd-el-lft-container1 {
+    width: 300px;
+    display: flex;
+    gap: .5em;
+    padding-top: 10px;
+}
+
+.keys-container-main {
+    width: 100%;
+    display: flex;
+    gap: .5em;
+}
+
+.left-value {
+    word-break: break-all;
+    color: var(--color);
+}
+.line{
+    width: 200px;
+    height: 50px;
+    border-top:1px solid rgb(190, 190, 190);
+    margin-top: 1em;
+    transform: translateX(-18px);
+    text-align: center;
+    padding-top: 1em;
+    color:  rgb(190, 190, 190);;
+}
+.right-second-el{
+    display: flex;
+    width: 100%;
+}
+.rgt-scnd-el-right{
+    width:60% ;
+    font-weight: 600;
+    font-size: 18px;
+    color: rgb(190, 190, 190);
+    border-left:2px solid rgb(232, 232, 232);
+    margin: 40px 0 30px 0px;
+    padding-left: 40px;
+}
+.location{
+    width: 100%;
+    height:50% ;
+    margin-top: 1em;
 }
 /* right section end */
-

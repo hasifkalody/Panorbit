@@ -1,0 +1,8 @@
+.chatbox-list{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: 0;
+    right: 25px;
+    background-color: aqua;
+}
