@@ -1,8 +1,91 @@
-.chatbox-list{
-    width: 200px;
-    height: 200px;
-    position: absolute;
+.chatbox1{
+    width: 250px;
+    height: 60px;
+    position: fixed;
     bottom: 0;
-    right: 25px;
-    background-color: aqua;
+    right: 30px;
+    border-radius: 10px 10px 0 0 ;
+    background-color: white;
+    overflow: hidden;
+    border: 1px solid#3062c7;
+    border-bottom: none;
+    transition: .05s ease-in ;
+    cursor: pointer;
+}
+svg{
+    width: 30px;
+}
+.box-head{
+    height: 60px;
+    background-color: #3062c7;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+}
+.head-1st-elm{
+    display: flex;
+    align-items: center;
+    gap: .5em;
+    color: white;
+}
+.chatbox-list svg {
+    width: 35px;
+  }
+.arrow{
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid white;
+    border-right: 2px solid white;
+    transform: rotate(135deg);
+}
+.arrow-unexpanded{
+    transform: rotate(-45deg);
+}
+.chatbox-list-main{
+    height: 390px;
+    padding:4px 20px 0;
+    overflow-y: scroll;
+}
+.chatbox-list-main::-webkit-scrollbar{
+    width: 15px;
+}
+.chatbox-list-main::-webkit-scrollbar-thumb{
+    background-color: rgb(224,224,224);
+    border: 5px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    border-radius: 25px;
+}
+.chatbox-list{
+    display: flex;
+    align-items: center;
+    padding: 4px 0 ;
+    justify-content: space-between;
+}
+.online-status{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green;
+}
+.offline{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgb(211, 211, 211);
+}
+.list-user{
+    display: flex;
+    align-items: center;
+    gap: .8em;
+    color: var(--color);
+    font-size: 14px;
+    font-weight: 500;
+}
+.list-user img{
+    width: 40px;
+    border-radius: 50%;
+}
+.expand-chat{
+    height: 450px;
 }

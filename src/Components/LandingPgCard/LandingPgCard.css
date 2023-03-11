@@ -9,10 +9,10 @@
     padding-bottom: 15px;
 }
 
-.landing-card-main ::-webkit-scrollbar{
+.landing-card-body::-webkit-scrollbar{
     width: 15px; 
 }
-.landing-card-main ::-webkit-scrollbar-thumb{
+.landing-card-body::-webkit-scrollbar-thumb{
     background-color: rgb(224,224,224);
     border: 5px solid rgba(0, 0, 0, 0);
     background-clip: padding-box;

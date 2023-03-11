@@ -4,10 +4,15 @@ import { userContext } from '../Context/Context'
 import MapContainer from '../Map/Map'
 import ProfileCard from '../ProfileCard/ProfileCard'
 import Chatbox1 from '../Chatbox1/Chatbox1'
+import Chatbox2 from '../Chatbox2/Chatbox2'
 function HomePage() {
     const { user, setuser } = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
-    const profileBadge = useRef()
+    const [chat, setChat] = useState({})
+    const profileBadge = useRef(null)
+    const chatUser = (user) => {
+        setChat(user)
+    }
     const handleProfileCard = () => {
         setShowProfileCard((x) => !x)
     }
@@ -20,7 +25,7 @@ function HomePage() {
         document.addEventListener('mousedown', handleClick)
         return () => {
             document.removeEventListener('mousedown', handleClick);
-          };
+        };
     }, [])
     return (
         <div className='profile-contaier'>
@@ -147,7 +152,8 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <Chatbox1/>
+            <Chatbox1 user={user} chatUser={chatUser}/>
+            {chat.name&&<Chatbox2 chat={chat} setChat={setChat}/>}
         </div>
     )
 }
