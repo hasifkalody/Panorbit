@@ -1,0 +1,13 @@
+.response-text {
+    color: rgb(211, 211, 211, .5);
+    font-size: 60px;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}

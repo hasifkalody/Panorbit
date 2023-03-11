@@ -4,7 +4,7 @@ import HomePage from '../Components/Home Page/HomePage'
 function Home() {
   return (
     <div>
-      <HomePage/>
+      <HomePage pageName={'Profile'}/>
     </div>
   )
 }

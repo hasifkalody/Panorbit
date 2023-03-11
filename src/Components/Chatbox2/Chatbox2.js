@@ -76,6 +76,11 @@ function Chatbox2({ chat, setChat }) {
                 })
                 }
             </div>
+            <div className='chat-content'>
+                <div className='arrow-send'>
+
+                </div>
+            </div>
         </div>
     )
 }

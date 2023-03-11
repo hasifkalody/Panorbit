@@ -64,8 +64,8 @@
 }
 
 .chats {
-  height: 290px;
-  padding: 8px 20px 0;
+  height: 260px;
+  padding: 0 20px;
   font-size: 10px;
   color: rgb(216, 216, 216);
   overflow-y: scroll;
@@ -127,4 +127,20 @@
   text-align: center;
   margin: 8px 0 0;
   color: rgb(200, 200, 200);
+}
+.chat-content{
+  height: 30px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgb(200, 200, 200);
+}
+.arrow-send{
+  width: 12px;
+  height: 12px;
+  border-top: 5px solid #3062c7;
+  border-right: 5px solid #3062c7;
+  transform: rotate(45deg);
+
 }

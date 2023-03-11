@@ -5,7 +5,9 @@ import MapContainer from '../Map/Map'
 import ProfileCard from '../ProfileCard/ProfileCard'
 import Chatbox1 from '../Chatbox1/Chatbox1'
 import Chatbox2 from '../Chatbox2/Chatbox2'
-function HomePage() {
+import { useNavigate } from 'react-router-dom'
+function HomePage({pageName}) {
+    const Navigate=useNavigate()
     const { user, setuser } = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
@@ -28,15 +30,15 @@ function HomePage() {
         <div className='profile-contaier'>
             <div className='profile-left'>
                 <div className='profile-inner'>
-                    <div className='profile-inner-el active'><span>Profile</span>
+                    <div className='profile-inner-el active'  onClick={()=>{Navigate('/homepage')}}><span>{pageName}</span>
                         {/* <div className='indicator-2el'>
                     <div className='indicator-1el'></div>
                     <div className='indicator-3el'></div>
                     </div> */}
                     </div>
-                    <div className='profile-inner-el'><span>Posts</span> </div>
-                    <div className='profile-inner-el'><span>Gallery</span> </div>
-                    <div className='profile-inner-el'><span>ToDo</span> </div>
+                    <div className='profile-inner-el' onClick={()=>{Navigate('/posts')}}><span>Posts</span> </div>
+                    <div className='profile-inner-el' onClick={()=>{Navigate('/gallery')}}><span>Gallery</span> </div>
+                    <div className='profile-inner-el' onClick={()=>{Navigate('/ToDo')}}><span>ToDo</span> </div>
                 </div>
             </div>
             <div className='profile-right'>
@@ -144,13 +146,27 @@ function HomePage() {
                                 <span className='left-value'>{user.address.zipcode}</span>
                             </div>
                         </div>
-                        <MapContainer lat={user.address.geo.lat} lng={user.address.geo.lng} />
+                        {/* <MapContainer lat={user.address.geo.lat} lng={user.address.geo.lng} /> */}
+                        <div className='google-marking'>
+                            <img src="/images/map.jpg" alt="location" />
+                            <div className='markings'> 
+                                <div className='lat-lng-marking'>
+                                    <span className='loc-key'>Lat:</span>
+                                    <span className='loc-value'>{user.address.geo.lat}</span>
+                                </div>
+                                <div className='lat-lng-marking'>
+                                    <span className='loc-key'>Long:</span>
+                                    <span className='loc-value'>{user.address.geo.lng}</span>
+                                </div>
+                            </div>
+                        </div>
+
 
                     </div>
                 </div>
             </div>
-            <Chatbox1 user={user} setChat={setChat}   />
-            {chat.name && <Chatbox2  chat={chat} setChat={setChat} />}
+            <Chatbox1 user={user} setChat={setChat} />
+            {chat.name && <Chatbox2 chat={chat} setChat={setChat} />}
         </div>
     )
 }
