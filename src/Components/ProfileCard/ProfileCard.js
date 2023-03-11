@@ -26,7 +26,7 @@ function ProfileCard({ user }) {
             <div className='other-rusers-cntnr'>
                 {otherUsers.map(x => {
                     return (
-                        <div className='profile-card-list'>
+                        <div key={x.id} className='profile-card-list'>
                             <img src={x.profilepicture} alt="profilepicture" />
                             <span>{x.username}</span>
                         </div>

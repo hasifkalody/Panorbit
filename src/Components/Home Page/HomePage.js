@@ -10,9 +10,6 @@ function HomePage() {
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
     const profileBadge = useRef(null)
-    const chatUser = (user) => {
-        setChat(user)
-    }
     const handleProfileCard = () => {
         setShowProfileCard((x) => !x)
     }
@@ -152,8 +149,8 @@ function HomePage() {
                     </div>
                 </div>
             </div>
-            <Chatbox1 user={user} chatUser={chatUser}/>
-            {chat.name&&<Chatbox2 chat={chat} setChat={setChat}/>}
+            <Chatbox1 user={user} setChat={setChat}   />
+            {chat.name && <Chatbox2  chat={chat} setChat={setChat} />}
         </div>
     )
 }

@@ -37,10 +37,13 @@ svg{
     height: 10px;
     border-top: 2px solid white;
     border-right: 2px solid white;
-    transform: rotate(135deg);
-}
-.arrow-unexpanded{
     transform: rotate(-45deg);
+}
+.arrow-condensed{
+    transform: rotate(-45deg) !important
+}
+.arrow-expanded{
+    transform: rotate(135deg);
 }
 .chatbox-list-main{
     height: 390px;
