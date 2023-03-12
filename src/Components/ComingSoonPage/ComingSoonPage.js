@@ -47,36 +47,36 @@ function ComingSoonPage({ pageName }) {
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/posts') }}>
-                            <span className={pageName === 'Posts' && 'active'}>Posts</span>
+                            <span className={pageName === 'Posts' ? 'active' :undefined}>Posts</span>
                         </div>
-                        {pageName === 'Posts' &&
+                        {pageName === 'Posts' ?
                             (<div className='indicator-2el'>
                                 <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>
-                            )
+                            ) :undefined
                         }
 
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/gallery') }}>
-                            <span className={pageName === 'Gallery' && 'active'}>Gallery</span>
+                            <span className={pageName === 'Gallery' ? 'active':undefined}>Gallery</span>
                         </div>
-                        {pageName === 'Gallery' &&
+                        {pageName === 'Gallery' ?
                             (<div className='indicator-2el'>
                                 <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>
-                            )
+                            ):undefined
                         }
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/ToDo') }}>
-                            <span className={pageName === 'ToDo' && 'active'}>ToDo</span>
+                            <span className={pageName === 'ToDo' ? 'active':undefined}>ToDo</span>
                         </div>
-                        {pageName === 'ToDo' &&
+                        {pageName === 'ToDo' ?
                             (<div className='indicator-2el'>
                                 <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>
-                            )
+                            ):undefined
                         }
                     </div>
                 </div>
@@ -88,7 +88,7 @@ function ComingSoonPage({ pageName }) {
                         <img src={user.profilepicture} alt="profilepicture" />
                         <span>{user.name}</span>
                     </div>
-                    {showProfileCard && <ProfileCard user={user} />}
+                    {showProfileCard ? <ProfileCard user={user} />:undefined}
 
                 </div>
                 <div className='response-text'>
@@ -97,7 +97,7 @@ function ComingSoonPage({ pageName }) {
 
             </div>
             <Chatbox1 user={user} setChat={setChat} />
-            {chat.name && <Chatbox2 chat={chat} setChat={setChat} />}
+            {chat.name ? <Chatbox2 chat={chat} setChat={setChat} />:undefined}
         </div>
     )
 }

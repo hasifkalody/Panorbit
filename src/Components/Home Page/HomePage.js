@@ -35,13 +35,14 @@ function HomePage({ pageName }) {
         };
     }, [])
 
+   if(user.name){
     return (
         <div className='profile-contaier'>
             <div className='profile-left'>
                 <div className='profile-inner'>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/homepage') }}>
-                            <span className={pageName === 'Profile' && 'active'}>Profile</span>
+                            <span className={pageName === 'Profile' ? 'active':undefined}>Profile</span>
                         </div>
                         <div className='indicator-2el'>
                             <img src="/images/activeIndicator.png" alt="activeIndicator" />
@@ -181,6 +182,7 @@ function HomePage({ pageName }) {
             {chat.name && <Chatbox2 chat={chat} setChat={setChat} />}
         </div>
     )
+   }
 }
 
 export default HomePage

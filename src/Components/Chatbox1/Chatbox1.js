@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import ChatIcon from '../../Assets/ChatIcon'
 import { userContext } from '../Context/Context'
+import {contextForChat} from '../Context/ContextForChatBox'
 import './Chatbox1.css'
 
 function Chatbox1({ user, setChat }) {
@@ -9,6 +10,7 @@ function Chatbox1({ user, setChat }) {
     const [otherUsers, setOtherUsers] = useState([])
     const [isExpand, setIsExpand] = useState(false)
     const chat = useRef()
+    const { setChatBox1,chatBox2 } = useContext(contextForChat)
 
 // to expand chat box when clicked on it
 
@@ -19,7 +21,8 @@ function Chatbox1({ user, setChat }) {
  // to hide chat box when clicked outside
 
     const handleClick = (e) => {
-        if (!chat.current.contains(e.target)) {
+        
+        if (!chat.current.contains(e.target) ) {
             setIsExpand(false)
         }
     }
@@ -32,6 +35,10 @@ function Chatbox1({ user, setChat }) {
             document.removeEventListener('mousedown', handleClick);
         };
     }, [])
+
+    useEffect(() => {
+        setChatBox1(chat)
+    })
     
     return (
         <div ref={chat} className={`${isExpand ? 'chatbox1 expand-chat' : 'chatbox1'}`}>
@@ -40,7 +47,7 @@ function Chatbox1({ user, setChat }) {
                     < ChatIcon />
                     <span>Chats</span>
                 </div>
-                <div className={`arrow ${isExpand && ' arrow-expanded'}`}>
+                <div className={`arrow ${isExpand ? 'arrow-expanded':undefined}`}>
 
                 </div>
             </div>
