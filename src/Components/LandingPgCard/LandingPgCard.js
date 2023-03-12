@@ -6,7 +6,7 @@ import './LandingPgCard.css'
 
 function LandingPgCard() {
 
-    const { user, setuser, setLoadedusers } = useContext(userContext)
+    const {setuser, setLoadedusers } = useContext(userContext)
     const Navigate = useNavigate()
     const [users, setusers] = useState([])
 

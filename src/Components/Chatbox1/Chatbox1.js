@@ -25,7 +25,7 @@ function Chatbox1({ user, setChat }) {
     }
 
     useEffect(() => {
-        const result = loadedusers.filter(x => x.id != user.id)
+        const result = loadedusers.filter(x => x.id !== user.id)
         setOtherUsers(result)
         document.addEventListener('mousedown', handleClick)
         return () => {
@@ -52,7 +52,7 @@ function Chatbox1({ user, setChat }) {
                             <img src={x.profilepicture} alt="profilepicture" />
                             <span> {x.name}</span>
                         </div>
-                        <div className={`${x.id % 2 == 0 ? 'online-status' : 'offline'}`}>
+                        <div className={`${x.id % 2 === 0 ? 'online-status' : 'offline'}`}>
                         </div>
                     </div>
                 )

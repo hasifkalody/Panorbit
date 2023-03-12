@@ -17,7 +17,7 @@ function ProfileCard({ user }) {
     }
 
     useEffect(() => {
-        const result = loadedusers.filter(x => x.id != id)
+        const result = loadedusers.filter(x => x.id !== id)
         setOtherUsers(result)
     }, [])
 

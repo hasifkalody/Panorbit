@@ -47,8 +47,8 @@ function Chatbox2({ chat, setChat }) {
             </div>
             <div className='chats'>
                 {messages.map(x => {
-                    if (x.id == 'user1') {
-                        if (x.id == previousMessenger) {
+                    if (x.id === 'user1') {
+                        if (x.id === previousMessenger) {
                             previousMessenger = x.id
                             return (
                                 <div className='messages-type3'>
@@ -72,7 +72,7 @@ function Chatbox2({ chat, setChat }) {
                     }
                     else {
 
-                        if (x.id == previousMessenger) {
+                        if (x.id === previousMessenger) {
                             previousMessenger = x.id
                             return (
                                 <div className='messages-type4'>

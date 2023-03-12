@@ -10,7 +10,7 @@ import './ComingSoonPage.css'
 function ComingSoonPage({ pageName }) {
 
     const Navigate = useNavigate()
-    const { user, setuser } = useContext(userContext)
+    const { user} = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
     const profileBadge = useRef(null)
@@ -47,9 +47,9 @@ function ComingSoonPage({ pageName }) {
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/posts') }}>
-                            <span className={pageName == 'Posts' && 'active'}>Posts</span>
+                            <span className={pageName === 'Posts' && 'active'}>Posts</span>
                         </div>
-                        {pageName == 'Posts' &&
+                        {pageName === 'Posts' &&
                             (<div className='indicator-2el'>
                                 <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>
@@ -59,9 +59,9 @@ function ComingSoonPage({ pageName }) {
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/gallery') }}>
-                            <span className={pageName == 'Gallery' && 'active'}>Gallery</span>
+                            <span className={pageName === 'Gallery' && 'active'}>Gallery</span>
                         </div>
-                        {pageName == 'Gallery' &&
+                        {pageName === 'Gallery' &&
                             (<div className='indicator-2el'>
                                 <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>
@@ -70,9 +70,9 @@ function ComingSoonPage({ pageName }) {
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/ToDo') }}>
-                            <span className={pageName == 'ToDo' && 'active'}>ToDo</span>
+                            <span className={pageName === 'ToDo' && 'active'}>ToDo</span>
                         </div>
-                        {pageName == 'ToDo' &&
+                        {pageName === 'ToDo' &&
                             (<div className='indicator-2el'>
                                 <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>

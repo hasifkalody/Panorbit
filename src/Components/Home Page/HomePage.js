@@ -10,7 +10,7 @@ import './HomePage.css'
 function HomePage({ pageName }) {
 
     const Navigate = useNavigate()
-    const { user, setuser } = useContext(userContext)
+    const { user } = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
     const profileBadge = useRef(null)
@@ -41,7 +41,7 @@ function HomePage({ pageName }) {
                 <div className='profile-inner'>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/homepage') }}>
-                            <span className={pageName == 'Profile' && 'active'}>Profile</span>
+                            <span className={pageName === 'Profile' && 'active'}>Profile</span>
                         </div>
                         <div className='indicator-2el'>
                             <img src="/images/activeIndicator.png" alt="activeIndicator" />
