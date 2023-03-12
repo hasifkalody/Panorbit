@@ -1,31 +1,41 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import '../Home Page/HomePage.css'
-import './ComingSoonPage.css'
 import ProfileCard from '../ProfileCard/ProfileCard'
 import { userContext } from '../Context/Context'
 import Chatbox1 from '../Chatbox1/Chatbox1'
 import Chatbox2 from '../Chatbox2/Chatbox2'
 import { useNavigate } from 'react-router-dom'
+import './ComingSoonPage.css'
+
 function ComingSoonPage({ pageName }) {
+
     const Navigate = useNavigate()
     const { user, setuser } = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
     const profileBadge = useRef(null)
+
+    // to toggle between hiding and showing of profile card.
+
     const handleClick = (e) => {
         if (!profileBadge.current.contains(e.target)) {
             setShowProfileCard(false)
         }
     }
+
+    // to hide profile card on clickin outside of it.
+
     const handleProfileCard = () => {
         setShowProfileCard((x) => !x)
     }
+
     useEffect(() => {
         document.addEventListener('mousedown', handleClick)
         return () => {
             document.removeEventListener('mousedown', handleClick);
         };
     }, [])
+
     return (
         <div className='profile-contaier'>
             <div className='profile-left'>
@@ -37,7 +47,7 @@ function ComingSoonPage({ pageName }) {
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/posts') }}>
-                            <span className={pageName=='Posts'&&'active'}>Posts</span>
+                            <span className={pageName == 'Posts' && 'active'}>Posts</span>
                         </div>
                         {pageName == 'Posts' &&
                             (<div className='indicator-2el'>
@@ -49,22 +59,22 @@ function ComingSoonPage({ pageName }) {
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/gallery') }}>
-                            <span className={pageName=='Gallery'&&'active'}>Gallery</span>
+                            <span className={pageName == 'Gallery' && 'active'}>Gallery</span>
                         </div>
                         {pageName == 'Gallery' &&
                             (<div className='indicator-2el'>
-                            <img src="/images/activeIndicator.png" alt="activeIndicator" />
+                                <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>
                             )
                         }
                     </div>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/ToDo') }}>
-                            <span className={pageName=='ToDo'&&'active'}>ToDo</span>
+                            <span className={pageName == 'ToDo' && 'active'}>ToDo</span>
                         </div>
                         {pageName == 'ToDo' &&
                             (<div className='indicator-2el'>
-                             <img src="/images/activeIndicator.png" alt="activeIndicator" />
+                                <img src="/images/activeIndicator.png" alt="activeIndicator" />
                             </div>
                             )
                         }

@@ -1,21 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './ProfileCard.css'
 import { userContext } from '../Context/Context'
 import { useNavigate } from 'react-router-dom'
+import './ProfileCard.css'
 
 function ProfileCard({ user }) {
+
     const { loadedusers } = useContext(userContext)
     const { profilepicture, name, username, id } = user
     const [otherUsers, setOtherUsers] = useState([])
-    const Navigate=useNavigate()
-    const handleSignOut=()=>{
+    const Navigate = useNavigate()
+
+    // to provide routing action.
+
+    const handleSignOut = () => {
         Navigate('/')
     }
-    
+
     useEffect(() => {
         const result = loadedusers.filter(x => x.id != id)
         setOtherUsers(result)
     }, [])
+
     return (
         <div className='profile-card'>
             <div className='profile-card-1st'>

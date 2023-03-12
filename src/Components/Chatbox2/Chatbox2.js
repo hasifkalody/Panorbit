@@ -1,19 +1,40 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { messages } from '../../Assets/messages'
 import './Chatbox2.css'
+
 function Chatbox2({ chat, setChat }) {
+    
     const { name, profilepicture } = chat
     const [condensedChatBox, setCondensedChatBox] = useState(false)
-    // For identifying user while iterating.Identification is done in order to allign text messages on left or right in accordance with the user who sent it
+    const chatConsole = useRef(null)
+
+// For identifying user while iterating.Identification is done in order to allign text messages on left or right in accordance with the user who sent it
+
     let previousMessenger = null
 
-    const handleChatBox = () => {
+// to expand chat box when clicked on it
+
+    const handleExpansion = () => {
         setCondensedChatBox((x) => !x)
     }
+// to hide chat box when clicked outside
+
+    const handleChatBox = (e) => {
+        if (!chatConsole.current.contains(e.target)) {
+            setCondensedChatBox((x) => true)
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleChatBox)
+        return () => {
+            document.removeEventListener('mousedown', handleChatBox);
+        };
+    }, [])
 
     return (
-        <div className={`chatbox1 chatbox2 ${condensedChatBox && 'condense-chat-box '}`}>
-            <div className='box-head2'>
+        <div ref={chatConsole} className={`chatbox1 chatbox2 ${condensedChatBox && 'condense-chat-box '}`}>
+            <div className='box-head2' onClick={handleExpansion}>
                 <div className='head-1st-elm elm-img'>
                     <img src={profilepicture} alt="profilepicture" />
                     <span>{name}</span>

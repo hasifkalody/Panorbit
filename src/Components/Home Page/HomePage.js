@@ -1,38 +1,47 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import './HomePage.css'
 import { userContext } from '../Context/Context'
-import MapContainer from '../Map/Map'
+// import MapContainer from '../Map/Map'
 import ProfileCard from '../ProfileCard/ProfileCard'
 import Chatbox1 from '../Chatbox1/Chatbox1'
 import Chatbox2 from '../Chatbox2/Chatbox2'
 import { useNavigate } from 'react-router-dom'
+import './HomePage.css'
+
 function HomePage({ pageName }) {
+
     const Navigate = useNavigate()
     const { user, setuser } = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
     const profileBadge = useRef(null)
+
+// to toggle between hiding and showing of profile card.
+
     const handleProfileCard = () => {
         setShowProfileCard((x) => !x)
     }
+// to hide profile card on clickin outside of it.
+
     const handleClick = (e) => {
         if (!profileBadge.current.contains(e.target)) {
             setShowProfileCard(false)
         }
     }
+
     useEffect(() => {
         document.addEventListener('mousedown', handleClick)
         return () => {
             document.removeEventListener('mousedown', handleClick);
         };
     }, [])
+
     return (
         <div className='profile-contaier'>
             <div className='profile-left'>
                 <div className='profile-inner'>
                     <div className='pageNames'>
                         <div className='profile-inner-el' onClick={() => { Navigate('/homepage') }}>
-                            <span className={pageName=='Profile'&&'active'}>Profile</span>
+                            <span className={pageName == 'Profile' && 'active'}>Profile</span>
                         </div>
                         <div className='indicator-2el'>
                             <img src="/images/activeIndicator.png" alt="activeIndicator" />
@@ -149,7 +158,9 @@ function HomePage({ pageName }) {
                                 <span className='left-value'>{user.address.zipcode}</span>
                             </div>
                         </div>
+                        {/* code to mark location on google map from latitude and longitude data. START */}
                         {/* <MapContainer lat={user.address.geo.lat} lng={user.address.geo.lng} /> */}
+                        {/* code to mark location on google map from latitude and longitude data. END */}
                         <div className='google-marking'>
                             <img src="/images/map.jpg" alt="location" />
                             <div className='markings'>
