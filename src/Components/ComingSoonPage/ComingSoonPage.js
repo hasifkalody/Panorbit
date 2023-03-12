@@ -30,15 +30,45 @@ function ComingSoonPage({ pageName }) {
         <div className='profile-contaier'>
             <div className='profile-left'>
                 <div className='profile-inner'>
-                    <div className='profile-inner-el active' onClick={() => { Navigate('/homepage') }}><span>Profile</span>
-                        {/* <div className='indicator-2el'>
-                <div className='indicator-1el'></div>
-                <div className='indicator-3el'></div>
-                </div> */}
+                    <div className='pageNames'>
+                        <div className='profile-inner-el' onClick={() => { Navigate('/homepage') }}>
+                            <span>Profile</span>
+                        </div>
                     </div>
-                    <div className='profile-inner-el' onClick={() => { Navigate('/posts') }}><span>Posts</span> </div>
-                    <div className='profile-inner-el' onClick={() => { Navigate('/gallery') }}><span>Gallery</span> </div>
-                    <div className='profile-inner-el' onClick={() => { Navigate('/ToDo') }}><span>ToDo</span> </div>
+                    <div className='pageNames'>
+                        <div className='profile-inner-el' onClick={() => { Navigate('/posts') }}>
+                            <span className={pageName=='Posts'&&'active'}>Posts</span>
+                        </div>
+                        {pageName == 'Posts' &&
+                            (<div className='indicator-2el'>
+                                <img src="/images/activeIndicator.png" alt="activeIndicator" />
+                            </div>
+                            )
+                        }
+
+                    </div>
+                    <div className='pageNames'>
+                        <div className='profile-inner-el' onClick={() => { Navigate('/gallery') }}>
+                            <span className={pageName=='Gallery'&&'active'}>Gallery</span>
+                        </div>
+                        {pageName == 'Gallery' &&
+                            (<div className='indicator-2el'>
+                            <img src="/images/activeIndicator.png" alt="activeIndicator" />
+                            </div>
+                            )
+                        }
+                    </div>
+                    <div className='pageNames'>
+                        <div className='profile-inner-el' onClick={() => { Navigate('/ToDo') }}>
+                            <span className={pageName=='ToDo'&&'active'}>ToDo</span>
+                        </div>
+                        {pageName == 'ToDo' &&
+                            (<div className='indicator-2el'>
+                             <img src="/images/activeIndicator.png" alt="activeIndicator" />
+                            </div>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
             <div className='profile-right'>

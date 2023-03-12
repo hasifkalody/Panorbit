@@ -9,7 +9,7 @@ function App() {
     <Context>
       <Router>
         <Routes>
-          <Route path='landingPage' element={<Landing />} />
+          <Route path='/' element={<Landing />} />
           <Route path='homepage' element={<HomePage />} />
           <Route path='posts' element={<ComingSoon pageName={'Posts'} />} />
           <Route path='gallery' element={<ComingSoon pageName={'Gallery'} />} />

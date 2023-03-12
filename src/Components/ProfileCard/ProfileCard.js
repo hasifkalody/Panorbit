@@ -9,7 +9,7 @@ function ProfileCard({ user }) {
     const [otherUsers, setOtherUsers] = useState([])
     const Navigate=useNavigate()
     const handleSignOut=()=>{
-        Navigate('/landingpage')
+        Navigate('/')
     }
     
     useEffect(() => {
