@@ -2,18 +2,26 @@ import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { userContext } from '../Context/Context'
 import { useNavigate } from 'react-router-dom'
+// redux part start
+import {useDispatch} from 'react-redux'
+import {addUser} from '../../Redux/user'
+// redux part end
+
 import './LandingPgCard.css'
 
 function LandingPgCard() {
 
+    // redux part start
+    const dispatch=useDispatch()
+    // redux part end
+    const [users, setusers] = useState([])
     const {setuser, setLoadedusers } = useContext(userContext)
     const Navigate = useNavigate()
-    const [users, setusers] = useState([])
 
     // to provide routing action.
 
     const handleClick = (x) => {
-        setuser(x)
+        dispatch(addUser(x))
         Navigate('/homepage')
     }
 

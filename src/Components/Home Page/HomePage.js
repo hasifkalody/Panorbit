@@ -5,22 +5,29 @@ import ProfileCard from '../ProfileCard/ProfileCard'
 import Chatbox1 from '../Chatbox1/Chatbox1'
 import Chatbox2 from '../Chatbox2/Chatbox2'
 import { useNavigate } from 'react-router-dom'
+// redux part start
+import { useSelector, useDispatch } from 'react-redux'
+import { addUser } from '../../Redux/user'
+// redux part start end
 import './HomePage.css'
 
 function HomePage({ pageName }) {
 
+    // redux part start
+    const { user } = useSelector((state) => state.user)
+    console.log(user)
+    // redux part start end
     const Navigate = useNavigate()
-    const { user } = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
     const profileBadge = useRef(null)
 
-// to toggle between hiding and showing of profile card.
+    // to toggle between hiding and showing of profile card.
 
     const handleProfileCard = () => {
         setShowProfileCard((x) => !x)
     }
-// to hide profile card on clickin outside of it.
+    // to hide profile card on clickin outside of it.
 
     const handleClick = (e) => {
         if (!profileBadge.current.contains(e.target)) {
@@ -35,154 +42,154 @@ function HomePage({ pageName }) {
         };
     }, [])
 
-   if(user.name){
-    return (
-        <div className='profile-contaier'>
-            <div className='profile-left'>
-                <div className='profile-inner'>
-                    <div className='pageNames'>
-                        <div className='profile-inner-el' onClick={() => { Navigate('/homepage') }}>
-                            <span className={pageName === 'Profile' ? 'active':undefined}>Profile</span>
+  
+        return (
+            <div className='profile-contaier'>
+                <div className='profile-left'>
+                    <div className='profile-inner'>
+                        <div className='pageNames'>
+                            <div className='profile-inner-el' onClick={() => { Navigate('/homepage') }}>
+                                <span className={pageName === 'Profile' ? 'active' : undefined}>Profile</span>
+                            </div>
+                            <div className='indicator-2el'>
+                                <img src="/images/activeIndicator.png" alt="activeIndicator" />
+                            </div>
                         </div>
-                        <div className='indicator-2el'>
-                            <img src="/images/activeIndicator.png" alt="activeIndicator" />
+
+                        <div className='profile-inner-el' onClick={() => { Navigate('/posts') }}><span>Posts</span> </div>
+                        <div className='profile-inner-el' onClick={() => { Navigate('/gallery') }}><span>Gallery</span> </div>
+                        <div className='profile-inner-el' onClick={() => { Navigate('/ToDo') }}><span>ToDo</span> </div>
+                    </div>
+                </div>
+                <div className='profile-right'>
+                    <div className='right-first-el'>
+                        <span>Profile</span>
+                        <div ref={profileBadge} className='first-el-rght' onClick={handleProfileCard}>
+                            <img src={user.profilepicture} alt="profilepicture" />
+                            <span>{user.name}</span>
                         </div>
-                    </div>
+                        {showProfileCard && <ProfileCard user={user} />}
 
-                    <div className='profile-inner-el' onClick={() => { Navigate('/posts') }}><span>Posts</span> </div>
-                    <div className='profile-inner-el' onClick={() => { Navigate('/gallery') }}><span>Gallery</span> </div>
-                    <div className='profile-inner-el' onClick={() => { Navigate('/ToDo') }}><span>ToDo</span> </div>
-                </div>
-            </div>
-            <div className='profile-right'>
-                <div className='right-first-el'>
-                    <span>Profile</span>
-                    <div ref={profileBadge} className='first-el-rght' onClick={handleProfileCard}>
-                        <img src={user.profilepicture} alt="profilepicture" />
-                        <span>{user.name}</span>
                     </div>
-                    {showProfileCard && <ProfileCard user={user} />}
-
-                </div>
-                <div className='right-second-el'>
-                    <div className='rgt-scnd-el-left'>
-                        <img src={user.profilepicture} alt="" />
-                        <span>{user.name}</span>
-                        <div className='rgt-scnd-el-lft-container1'>
+                    <div className='right-second-el'>
+                        <div className='rgt-scnd-el-left'>
+                            <img src={user.profilepicture} alt="" />
+                            <span>{user.name}</span>
+                            <div className='rgt-scnd-el-lft-container1'>
+                                <div className='rgt-scnd-el-lft-keys'>
+                                    <div className='keys-container-main'>
+                                        <div className='keys-container'>
+                                            <span className='left-key'>Username</span>
+                                            <span>:</span>
+                                        </div>
+                                        <span className='left-value'>{user.username}</span>
+                                    </div>
+                                    <div className='keys-container-main'>
+                                        <div className='keys-container'>
+                                            <span className='left-key'>e-mail </span>
+                                            <span>:</span>
+                                        </div>
+                                        <span className='left-value'>{user.email}</span>
+                                    </div>
+                                    <div className='keys-container-main'>
+                                        <div className='keys-container'>
+                                            <span className='left-key'>Phone </span>
+                                            <span>:</span>
+                                        </div>
+                                        <span className='left-value'>{user.phone}</span>
+                                    </div>
+                                    <div className='keys-container-main'>
+                                        <div className='keys-container'>
+                                            <span className='left-key'>Website </span>
+                                            <span>:</span>
+                                        </div>
+                                        <span className='left-value'>{user.website}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='line'>
+                                <span>Company</span>
+                            </div>
                             <div className='rgt-scnd-el-lft-keys'>
                                 <div className='keys-container-main'>
                                     <div className='keys-container'>
-                                        <span className='left-key'>Username</span>
+                                        <span className='left-key'>Name</span>
                                         <span>:</span>
                                     </div>
-                                    <span className='left-value'>{user.username}</span>
+                                    <span className='left-value'>{user.company.name}</span>
                                 </div>
                                 <div className='keys-container-main'>
                                     <div className='keys-container'>
-                                        <span className='left-key'>e-mail </span>
+                                        <span className='left-key'>catchPhrase</span>
                                         <span>:</span>
                                     </div>
-                                    <span className='left-value'>{user.email}</span>
+                                    <span className='left-value'>{user.company.catchPhrase}</span>
                                 </div>
                                 <div className='keys-container-main'>
                                     <div className='keys-container'>
-                                        <span className='left-key'>Phone </span>
+                                        <span className='left-key'>bs</span>
                                         <span>:</span>
                                     </div>
-                                    <span className='left-value'>{user.phone}</span>
+                                    <span className='left-value'>{user.company.bs}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div className='rgt-scnd-el-right'>
+                            <span>Address</span>
+                            <div className='rgt-scnd-el-lft-keys'>
+                                <div className='keys-container-main'>
+                                    <div className='keys-container'>
+                                        <span className='left-key'>Street</span>
+                                        <span>:</span>
+                                    </div>
+                                    <span className='left-value'>{user.address.street}</span>
                                 </div>
                                 <div className='keys-container-main'>
                                     <div className='keys-container'>
-                                        <span className='left-key'>Website </span>
+                                        <span className='left-key'>Suite</span>
                                         <span>:</span>
                                     </div>
-                                    <span className='left-value'>{user.website}</span>
+                                    <span className='left-value'>{user.address.suite}</span>
+                                </div>
+                                <div className='keys-container-main'>
+                                    <div className='keys-container'>
+                                        <span className='left-key'>City</span>
+                                        <span>:</span>
+                                    </div>
+                                    <span className='left-value'>{user.address.city}</span>
+                                </div>
+                                <div className='keys-container-main'>
+                                    <div className='keys-container'>
+                                        <span className='left-key'>Zipcode</span>
+                                        <span>:</span>
+                                    </div>
+                                    <span className='left-value'>{user.address.zipcode}</span>
                                 </div>
                             </div>
-                        </div>
-                        <div className='line'>
-                            <span>Company</span>
-                        </div>
-                        <div className='rgt-scnd-el-lft-keys'>
-                            <div className='keys-container-main'>
-                                <div className='keys-container'>
-                                    <span className='left-key'>Name</span>
-                                    <span>:</span>
-                                </div>
-                                <span className='left-value'>{user.company.name}</span>
-                            </div>
-                            <div className='keys-container-main'>
-                                <div className='keys-container'>
-                                    <span className='left-key'>catchPhrase</span>
-                                    <span>:</span>
-                                </div>
-                                <span className='left-value'>{user.company.catchPhrase}</span>
-                            </div>
-                            <div className='keys-container-main'>
-                                <div className='keys-container'>
-                                    <span className='left-key'>bs</span>
-                                    <span>:</span>
-                                </div>
-                                <span className='left-value'>{user.company.bs}</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className='rgt-scnd-el-right'>
-                        <span>Address</span>
-                        <div className='rgt-scnd-el-lft-keys'>
-                            <div className='keys-container-main'>
-                                <div className='keys-container'>
-                                    <span className='left-key'>Street</span>
-                                    <span>:</span>
-                                </div>
-                                <span className='left-value'>{user.address.street}</span>
-                            </div>
-                            <div className='keys-container-main'>
-                                <div className='keys-container'>
-                                    <span className='left-key'>Suite</span>
-                                    <span>:</span>
-                                </div>
-                                <span className='left-value'>{user.address.suite}</span>
-                            </div>
-                            <div className='keys-container-main'>
-                                <div className='keys-container'>
-                                    <span className='left-key'>City</span>
-                                    <span>:</span>
-                                </div>
-                                <span className='left-value'>{user.address.city}</span>
-                            </div>
-                            <div className='keys-container-main'>
-                                <div className='keys-container'>
-                                    <span className='left-key'>Zipcode</span>
-                                    <span>:</span>
-                                </div>
-                                <span className='left-value'>{user.address.zipcode}</span>
-                            </div>
-                        </div>
-                        {/* code to mark location on google map from latitude and longitude data. START */}
-                        {/* <MapContainer lat={user.address.geo.lat} lng={user.address.geo.lng} /> */}
-                        {/* code to mark location on google map from latitude and longitude data. END */}
-                        <div className='google-marking'>
-                            <img src="/images/map.jpg" alt="location" />
-                            <div className='markings'>
-                                <div className='lat-lng-marking'>
-                                    <span className='loc-key'>Lat:</span>
-                                    <span className='loc-value'>{user.address.geo.lat}</span>
-                                </div>
-                                <div className='lat-lng-marking'>
-                                    <span className='loc-key'>Long:</span>
-                                    <span className='loc-value'>{user.address.geo.lng}</span>
+                            {/* code to mark location on google map from latitude and longitude data. START */}
+                            {/* <MapContainer lat={user.address.geo.lat} lng={user.address.geo.lng} /> */}
+                            {/* code to mark location on google map from latitude and longitude data. END */}
+                            <div className='google-marking'>
+                                <img src="/images/map.jpg" alt="location" />
+                                <div className='markings'>
+                                    <div className='lat-lng-marking'>
+                                        <span className='loc-key'>Lat:</span>
+                                        <span className='loc-value'>{user.address.geo.lat}</span>
+                                    </div>
+                                    <div className='lat-lng-marking'>
+                                        <span className='loc-key'>Long:</span>
+                                        <span className='loc-value'>{user.address.geo.lng}</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <Chatbox1 user={user} setChat={setChat} />
+                {chat.name && <Chatbox2 chat={chat} setChat={setChat} />}
             </div>
-            <Chatbox1 user={user} setChat={setChat} />
-            {chat.name && <Chatbox2 chat={chat} setChat={setChat} />}
-        </div>
-    )
-   }
+        )
+    
 }
 
 export default HomePage
