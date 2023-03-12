@@ -1,13 +1,11 @@
 import React, { useContext, useEffect, useRef, useState } from 'react'
-import { userContext } from '../Context/Context'
 // import MapContainer from '../Map/Map'
 import ProfileCard from '../ProfileCard/ProfileCard'
 import Chatbox1 from '../Chatbox1/Chatbox1'
 import Chatbox2 from '../Chatbox2/Chatbox2'
 import { useNavigate } from 'react-router-dom'
 // redux part start
-import { useSelector, useDispatch } from 'react-redux'
-import { addUser } from '../../Redux/user'
+import { useSelector} from 'react-redux'
 // redux part start end
 import './HomePage.css'
 
@@ -15,7 +13,6 @@ function HomePage({ pageName }) {
 
     // redux part start
     const { user } = useSelector((state) => state.user)
-    console.log(user)
     // redux part start end
     const Navigate = useNavigate()
     const [showProfileCard, setShowProfileCard] = useState(false)
@@ -23,12 +20,11 @@ function HomePage({ pageName }) {
     const profileBadge = useRef(null)
 
     // to toggle between hiding and showing of profile card.
-
     const handleProfileCard = () => {
         setShowProfileCard((x) => !x)
     }
+    
     // to hide profile card on clickin outside of it.
-
     const handleClick = (e) => {
         if (!profileBadge.current.contains(e.target)) {
             setShowProfileCard(false)

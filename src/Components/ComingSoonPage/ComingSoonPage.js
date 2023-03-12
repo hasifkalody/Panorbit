@@ -1,22 +1,25 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import '../Home Page/HomePage.css'
 import ProfileCard from '../ProfileCard/ProfileCard'
-import { userContext } from '../Context/Context'
 import Chatbox1 from '../Chatbox1/Chatbox1'
 import Chatbox2 from '../Chatbox2/Chatbox2'
 import { useNavigate } from 'react-router-dom'
+// redux part start
+import { useSelector} from 'react-redux'
+// redux part start end
 import './ComingSoonPage.css'
 
 function ComingSoonPage({ pageName }) {
 
+    // redux part start
+    const { user } = useSelector((state) => state.user)
+    // redux part start end   
     const Navigate = useNavigate()
-    const { user} = useContext(userContext)
     const [showProfileCard, setShowProfileCard] = useState(false)
     const [chat, setChat] = useState({})
     const profileBadge = useRef(null)
 
     // to toggle between hiding and showing of profile card.
-
     const handleClick = (e) => {
         if (!profileBadge.current.contains(e.target)) {
             setShowProfileCard(false)
@@ -24,7 +27,6 @@ function ComingSoonPage({ pageName }) {
     }
 
     // to hide profile card on clickin outside of it.
-
     const handleProfileCard = () => {
         setShowProfileCard((x) => !x)
     }

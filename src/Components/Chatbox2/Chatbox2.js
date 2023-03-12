@@ -16,12 +16,11 @@ function Chatbox2({ chat, setChat }) {
     let previousMessenger = null
 
 // to expand chat box when clicked on it
-
     const handleExpansion = () => {
         setCondensedChatBox((x) => !x)
     }
+    
 // to hide chat box when clicked outside
-
     const handleChatBox = (e) => {
         
         if (!chatConsole.current.contains(e.target) && !chatBox1.current.contains(e.target) ) {

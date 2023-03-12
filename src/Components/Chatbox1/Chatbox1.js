@@ -2,24 +2,27 @@ import React, { useContext, useEffect, useRef, useState } from 'react'
 import ChatIcon from '../../Assets/ChatIcon'
 import { userContext } from '../Context/Context'
 import {contextForChat} from '../Context/ContextForChatBox'
+// redux part start
+import { useSelector} from 'react-redux'
+// redux part start end
 import './Chatbox1.css'
 
 function Chatbox1({ user, setChat }) {
     
-    const { loadedusers } = useContext(userContext)
+    // redux part start
+    const { loadedusers} = useSelector((state) => state.user)
+    // redux part start end
     const [otherUsers, setOtherUsers] = useState([])
     const [isExpand, setIsExpand] = useState(false)
     const chat = useRef()
     const { setChatBox1,chatBox2 } = useContext(contextForChat)
 
 // to expand chat box when clicked on it
-
     const handleExpansion = () => {
         setIsExpand((x) => !x)
     }
 
  // to hide chat box when clicked outside
-
     const handleClick = (e) => {
         
         if (!chat.current.contains(e.target) ) {
@@ -28,8 +31,12 @@ function Chatbox1({ user, setChat }) {
     }
 
     useEffect(() => {
+
+        // to filter out current user from the list 
         const result = loadedusers.filter(x => x.id !== user.id)
         setOtherUsers(result)
+        
+        // to hide chat pop up on clicking outside
         document.addEventListener('mousedown', handleClick)
         return () => {
             document.removeEventListener('mousedown', handleClick);

@@ -1,17 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { userContext } from '../Context/Context'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+// redux part start
+import { useSelector} from 'react-redux'
+// redux part start end
 import './ProfileCard.css'
 
 function ProfileCard({ user }) {
 
-    const { loadedusers } = useContext(userContext)
+    // redux part start
+    const { loadedusers} = useSelector((state) => state.user)
+    // redux part start end
     const { profilepicture, name, username, id } = user
     const [otherUsers, setOtherUsers] = useState([])
     const Navigate = useNavigate()
 
     // to provide routing action.
-
     const handleSignOut = () => {
         Navigate('/')
     }
